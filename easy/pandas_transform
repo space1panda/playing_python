@@ -1,0 +1,38 @@
+for i, l in enumerate(paths):
+    data = open(paths[i], "r", encoding="utf-8").read().replace(",", "")
+    with open(paths[i], "w", encoding="utf-8") as f:
+        f.write(data)
+    df = pd.read_csv(paths[i], error_bad_lines=False)
+    df.rename(columns={"Navigation":"readline"}, inplace=True)
+    database = df[290:]
+
+    companies = []
+    phones = []
+    level = []
+    cities = []
+
+    for i, l in database.iterrows():
+        if "* " in l["readline"]:
+            companies.append(l["readline"])
+        
+    for i, l in database.iterrows():
+        if "* " in l["readline"]:
+            level.append(database["readline"][i+3])
+
+    for i, l in database.iterrows():
+        if "Call" in l["readline"]:
+            phones.append(l["readline"])
+
+    for i, l in database.iterrows():
+        if "* " in l["readline"]:
+            cities.append(database["readline"][i+1])
+
+    if len(companies)==len(phones):
+        final = {"companies":companies, "city":cities, "level":level, "phones":phones}
+    else:
+        final = {"companies":companies, "city":cities, "level":level}
+
+    export = pd.DataFrame.from_dict(final)
+    export_csv = export.to_csv(r'export_dataframe.csv', index = None, 
+                               mode="a", header=False)
+    export_csv
