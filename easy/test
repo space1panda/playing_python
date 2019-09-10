@@ -1,0 +1,9 @@
+gdp_source = pd.read_csv("GDP.csv", encoding='latin1')[4:209]
+gdp_source.rename(columns={'Unnamed: 3':'Country', 'Unnamed: 4':'GDP2018'}, inplace=True)
+gdp_source = gdp_source[['Country', 'GDP2018']]
+gdp_source = gdp_source.dropna().drop(['Country'], axis=1)
+gdp_source['GDP2018'] = [x.strip().replace(',', '') for x in gdp_source['GDP2018']]
+x = gdp_source['GDP2018'].to_numpy(dtype=np.int32)
+x = x.reshape(205,1)
+y = np.sin(x)
+plt.scatter(x, y)
