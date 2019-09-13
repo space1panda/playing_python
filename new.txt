@@ -1,2 +1,15 @@
 This is a test document for checking bash availabilities. 
 New line
+losses = []
+N = float(len(y))
+for i in range(num_iter):
+    h = x.dot(w) + b
+    error = y.flatten() - h
+    mse = (np.power(error,2)).mean()
+    losses.append(mse)
+    gradient_w = -(2/N) * np.sum(error.dot(x))
+    gradient_b = -(2/N) * np.sum(error)
+    w -= alpha*gradient_w
+    b -= alpha*gradient_b
+print(losses[-1])
+plt.plot(losses, range(num_iter))
