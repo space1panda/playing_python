@@ -1,7 +1,6 @@
 # Playing Python
-## Random solutions with Python 3. 
-The easy scripts are ones done with 1 module;
+## Random solutions with Python 3+
 
-The medium scripts are ones requiring more than 1 module;
-
-The hard scripts are ones requiring working withing a framework (e.g. django) 
+- The clean scripts are ones done without any additional libraries;
+- The libs scripts are ones done with the usage of outter libraries;
+- The frame scripts are ones done withing a framework (e.g. django) 
