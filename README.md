@@ -1,4 +1,4 @@
-# Playing Python
+# Play&Python
 ## Random solutions with Python 3+
 
 - The clean scripts are ones done without any additional libraries;
